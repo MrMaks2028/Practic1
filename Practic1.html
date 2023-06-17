@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практическая работа №1</title>
+</head>
+<body>
+    <script>
+
+    
+        generateHeader('SiteName', ['Menu', 'Options', 'Profile'], 'darkgreen', 'white');
+
+        function _for(num){
+            let result = '';
+            if(typeof num == 'number'){
+                for(let i = 0; i < num; i++){
+                    result += '<a style="font-size: 25px; margin: 0 2px; padding: 5px; text-decoration: none; color: white; border: 3px solid white" href="#">empty</a>\n';
+                }
+            }
+            else if(Array.isArray(num)){
+                for(let i = 0; i < num.length; i++){
+                    result += `<a style="font-size: 25px; margin: 0 2px; padding: 5px; text-decoration: none; color: white; border: 3px solid white" href="#">${num[i]}</a>\n`;
+                }
+            }
+            return result;
+        }
+
+        function generateHeader(title, navitems, bgcolor, fontcolor){
+            if(typeof navitems == 'number'){
+                document.write
+                (`
+                <header style="display: flex; justify-content: space-between; align-items: center; background-color: ${bgcolor}; color: ${fontcolor}; padding: 5px;">
+                    <div style="display: flex; align-items: center;">
+                        <h1>${title}</h1>
+                    </div>
+
+                    <div style="display: flex; align-items: center;">
+                        <nav style="display: flex; align-items: center;">
+                            ${_for(navitems)}
+                        </nav>
+                    </div>
+                    
+                </header>
+                `);
+            }
+            else if(Array.isArray(navitems)){
+                document.write
+                (`
+                <header style="display: flex; justify-content: space-between; align-items: center; background-color: ${bgcolor}; color: ${fontcolor}; padding: 5px;">
+                    <div style="display: flex; align-items: center;">
+                        <h1>${title}</h1>
+                    </div>
+
+                    <div style="display: flex; align-items: center;">
+                        <nav style="display: flex; align-items: center;">
+                            ${_for(navitems)}
+                        </nav>
+                    </div>
+                    
+                </header>
+                `);
+            }
+        }
+    </script>
+</body>
+</html>
